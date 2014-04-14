@@ -11,18 +11,24 @@
             android:padding="8dp"
             android:id="@+id/text_input"
             android:hint="Enter Text"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@drawable/border"
+            android:textColor="@android:color/black"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compress"
             android:id="@+id/button_compressor"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"/>
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_compressed"/>
+            android:id="@+id/text_compressed"
+            android:padding="8dp"
+            android:textSize="22sp"/>
 
 </LinearLayout>
 
