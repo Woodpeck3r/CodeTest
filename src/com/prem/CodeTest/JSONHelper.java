@@ -21,6 +21,7 @@ public class JSONHelper {
       jsonObject.put("whats", "wats");
       jsonObject.put("are", "r");
       jsonObject.put("how", "hw");
+      jsonObject.put("what are you", "em");
 
 
       /*We can map more words here*/

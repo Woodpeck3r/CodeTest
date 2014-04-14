@@ -2,7 +2,6 @@ package com.prem.CodeTest;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ import android.os.Handler;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CompressorActivity extends Activity {
 
@@ -52,7 +52,7 @@ public class CompressorActivity extends Activity {
             }
           }, 1500);
         } else {
-          String compressedString = compressText(inputString);
+          String compressedString = compressText(inputString.toLowerCase());
           compressedText.setVisibility(View.VISIBLE);
           compressedText.setText(compressedString);
         }
@@ -61,7 +61,6 @@ public class CompressorActivity extends Activity {
   }
 
 //  private String compressText(String inputString) {
-//
 //    String[] words = inputString.split(" ");
 //    String compressedString = new String(inputString);
 //
@@ -79,18 +78,16 @@ public class CompressorActivity extends Activity {
 
 
   private String compressText(String inputString) {
-
-    String[] words = inputString.split(" ");
-    String compressedString = new String(inputString);
     String jsonString = getResources().getString(R.string.json_string);
     Map<String, String> map = new Gson().fromJson(jsonString, HashMap.class);
-    Log.d("map:", map.toString());
-    for (String word : words) {
-      if (map.containsKey(word.toLowerCase())) {
-        compressedString = compressedString.replace(word, map.get(word.toLowerCase()));
+    Set<String> keySet = map.keySet();
+    for (String key : keySet) {
+      String keyPattern = (key.contains("_")) ? key.replaceAll("_", " ") : key;
+      if (inputString.contains(keyPattern)) {
+        inputString = inputString.replace(keyPattern, map.get(key));
       }
     }
-    return compressedString;
+    return inputString;
   }
 
 }
