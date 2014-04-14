@@ -86,8 +86,8 @@ public class CompressorActivity extends Activity {
     Map<String, String> map = new Gson().fromJson(jsonString, HashMap.class);
     Log.d("map:", map.toString());
     for (String word : words) {
-      if (map.containsKey(word)) {
-        compressedString = compressedString.replace(word, map.get(word));
+      if (map.containsKey(word.toLowerCase())) {
+        compressedString = compressedString.replace(word, map.get(word.toLowerCase()));
       }
     }
     return compressedString;
