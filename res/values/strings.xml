@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CodeTest</string>
+    <string name="json_string">
+        {
+        "office":"ofc",
+        "going":"gng",
+        "are":"r",
+        "please":"pls",
+        "how":"hw",
+        "what":"wat",
+        "your":"ur",
+        "sorry":"sry",
+        "doing":"dng",
+        "you":"u",
+        "whats":"wats"
+        }
+    </string>
+
 </resources>

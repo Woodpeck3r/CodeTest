@@ -7,7 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import org.json.JSONException;
+import com.google.gson.Gson;
+
+import android.os.Handler;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CompressorActivity extends Activity {
 
@@ -39,6 +44,13 @@ public class CompressorActivity extends Activity {
         String inputString = inputText.getText().toString();
         if (inputString == null || inputString.length() == 0) {
           inputText.setError("Please Enter Input");
+          final Handler handler = new Handler();
+          handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              inputText.setError(null);
+            }
+          }, 1500);
         } else {
           String compressedString = compressText(inputString);
           compressedText.setVisibility(View.VISIBLE);
@@ -48,20 +60,37 @@ public class CompressorActivity extends Activity {
     });
   }
 
+//  private String compressText(String inputString) {
+//
+//    String[] words = inputString.split(" ");
+//    String compressedString = new String(inputString);
+//
+//    for (String word : words) {
+//      if (JSONHelper.jsonObject.has(word)) {
+//        try {
+//          compressedString = compressedString.replace(word, JSONHelper.jsonObject.getString(word));
+//        } catch (JSONException e) {
+//          Log.e("Json Exception:", e.getMessage());
+//        }
+//      }
+//    }
+//    return compressedString;
+//  }
+
+
   private String compressText(String inputString) {
 
     String[] words = inputString.split(" ");
     String compressedString = new String(inputString);
-
+    String jsonString = getResources().getString(R.string.json_string);
+    Map<String, String> map = new Gson().fromJson(jsonString, HashMap.class);
+    Log.d("map:", map.toString());
     for (String word : words) {
-      if (JSONHelper.jsonObject.has(word)) {
-        try {
-          compressedString = compressedString.replace(word, JSONHelper.jsonObject.getString(word));
-        } catch (JSONException e) {
-          Log.e("Json Exception:", e.getMessage());
-        }
+      if (map.containsKey(word)) {
+        compressedString = compressedString.replace(word, map.get(word));
       }
     }
     return compressedString;
   }
+
 }
