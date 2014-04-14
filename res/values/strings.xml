@@ -3,6 +3,7 @@
     <string name="app_name">CodeTest</string>
     <string name="json_string">
         {
+        "what_are_you":"em",
         "office":"ofc",
         "going":"gng",
         "are":"r",
@@ -10,10 +11,15 @@
         "how":"hw",
         "what":"wat",
         "your":"ur",
+        "luck":"lck",
         "sorry":"sry",
         "doing":"dng",
         "you":"u",
-        "whats":"wats"
+        "whats":"wats",
+        "hello":"hlo",
+        "look":"luk",
+        "best":"bst",
+        "good":"gud"
         }
     </string>
 
