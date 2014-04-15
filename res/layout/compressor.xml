@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compress"
+            android:textSize="22sp"
             android:id="@+id/button_compressor"
             android:layout_gravity="center"
             android:padding="8dp"
