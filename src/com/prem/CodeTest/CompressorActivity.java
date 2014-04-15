@@ -1,8 +1,10 @@
 package com.prem.CodeTest;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,12 +54,19 @@ public class CompressorActivity extends Activity {
             }
           }, 1500);
         } else {
+          closeKeyboard();
           String compressedString = compressText(inputString.toLowerCase());
           compressedText.setVisibility(View.VISIBLE);
           compressedText.setText(compressedString);
         }
       }
     });
+  }
+
+  private void closeKeyboard() {
+    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(inputText.getWindowToken(),
+        InputMethodManager.RESULT_UNCHANGED_SHOWN);
   }
 
 //  private String compressText(String inputString) {
