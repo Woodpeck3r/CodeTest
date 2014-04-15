@@ -21,6 +21,7 @@ public class CompressorActivity extends Activity {
   private EditText inputText;
   private Button compressButton;
   private TextView compressedText;
+  private Button clearButton;
 
 
   @Override
@@ -35,6 +36,7 @@ public class CompressorActivity extends Activity {
     inputText = (EditText) findViewById(R.id.text_input);
     compressButton = (Button) findViewById(R.id.button_compressor);
     compressedText = (TextView) findViewById(R.id.text_compressed);
+    clearButton = (Button) findViewById(R.id.button_clear);
   }
 
 
@@ -61,6 +63,18 @@ public class CompressorActivity extends Activity {
         }
       }
     });
+
+
+    clearButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        inputText.setText("");
+        compressedText.setText("");
+        compressedText.setVisibility(View.GONE);
+      }
+    });
+
+
   }
 
   private void closeKeyboard() {
